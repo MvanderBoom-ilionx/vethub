@@ -54,7 +54,7 @@ class PetControllerTest extends IntegrationTest {
             .andExpect(jsonPath("$[0].birthDate", is(equalTo(PET_BIRTH_DATE.toString()))))
             .andExpect(jsonPath("$[0].type.id", is(equalTo(1))))
             .andExpect(jsonPath("$[0].type.name", is(equalTo("Cat"))))
-            .andExpect(jsonPath("$[0].ownerId", is(equalTo(savedOwner.getId()))))
+            .andExpect(jsonPath("$[0].owner.id", is(equalTo(savedOwner.getId()))))
             .andExpect(jsonPath("$[0].visits", is(empty())));
     }
 
@@ -104,7 +104,7 @@ class PetControllerTest extends IntegrationTest {
             .andExpect(jsonPath("$.birthDate", is(equalTo(PET_BIRTH_DATE.toString()))))
             .andExpect(jsonPath("$.type.id", is(equalTo(1))))
             .andExpect(jsonPath("$.type.name", is(equalTo("Cat"))))
-            .andExpect(jsonPath("$.ownerId", is(equalTo(savedOwner.getId()))))
+            .andExpect(jsonPath("$.owner.id", is(equalTo(savedOwner.getId()))))
             .andExpect(jsonPath("$.visits", is(empty())));
     }
 
@@ -171,7 +171,7 @@ class PetControllerTest extends IntegrationTest {
             .andExpect(jsonPath("$.birthDate", is(equalTo(PET_BIRTH_DATE.toString()))))
             .andExpect(jsonPath("$.type.id", is(equalTo(1))))
             .andExpect(jsonPath("$.type.name", is(equalTo("Cat"))))
-            .andExpect(jsonPath("$.ownerId", is(equalTo(savedOwner.getId()))))
+            .andExpect(jsonPath("$.owner.id", is(equalTo(savedOwner.getId()))))
             .andExpect(jsonPath("$.visits", is(empty())));
     }
 

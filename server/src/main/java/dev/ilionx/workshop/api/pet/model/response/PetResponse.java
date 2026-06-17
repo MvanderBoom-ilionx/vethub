@@ -43,12 +43,8 @@ public class PetResponse {
     @Schema(description = "The pet type")
     private PetTypeResponse type;
 
-    @Schema(
-        description = "The owner's unique identifier",
-        example = "1",
-        requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    private Integer ownerId;
+    @Schema(description = "The owner summary")
+    private OwnerSummaryResponse owner;
 
     @Schema(description = "The pet's visits")
     private List<VisitSummaryResponse> visits;

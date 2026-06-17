@@ -52,7 +52,9 @@ class PetGlobalControllerTest extends IntegrationTest {
             .andExpect(jsonPath("$", hasSize(1)))
             .andExpect(jsonPath("$[0].id", is(equalTo(pet.getId()))))
             .andExpect(jsonPath("$[0].name", is(equalTo(PET_NAME))))
-            .andExpect(jsonPath("$[0].ownerId", is(equalTo(owner.getId()))));
+            .andExpect(jsonPath("$[0].owner.id", is(equalTo(owner.getId()))))
+            .andExpect(jsonPath("$[0].owner.firstName", is(notNullValue())))
+            .andExpect(jsonPath("$[0].owner.lastName", is(notNullValue())));
     }
 
     @Test
@@ -84,7 +86,9 @@ class PetGlobalControllerTest extends IntegrationTest {
             .andExpect(jsonPath("$.birthDate", is(notNullValue())))
             .andExpect(jsonPath("$.type.id", is(equalTo(1))))
             .andExpect(jsonPath("$.type.name", is(notNullValue())))
-            .andExpect(jsonPath("$.ownerId", is(equalTo(owner.getId()))))
+            .andExpect(jsonPath("$.owner.id", is(equalTo(owner.getId()))))
+            .andExpect(jsonPath("$.owner.firstName", is(notNullValue())))
+            .andExpect(jsonPath("$.owner.lastName", is(notNullValue())))
             .andExpect(jsonPath("$.visits", is(notNullValue())));
     }
 
@@ -122,7 +126,9 @@ class PetGlobalControllerTest extends IntegrationTest {
             .andExpect(status().isCreated())
             .andExpect(jsonPath("$.id", is(notNullValue())))
             .andExpect(jsonPath("$.name", is(equalTo(PET_NAME))))
-            .andExpect(jsonPath("$.ownerId", is(equalTo(owner.getId()))))
+            .andExpect(jsonPath("$.owner.id", is(equalTo(owner.getId()))))
+            .andExpect(jsonPath("$.owner.firstName", is(notNullValue())))
+            .andExpect(jsonPath("$.owner.lastName", is(notNullValue())))
             .andReturn()
             .getResponse()
             .getContentAsString();
@@ -131,7 +137,7 @@ class PetGlobalControllerTest extends IntegrationTest {
         final PetResponse petResponse = fromJson(responseBody, PetResponse.class);
         assertThat(petResponse.getId(), is(notNullValue()));
         assertThat(petResponse.getName(), is(equalTo(PET_NAME)));
-        assertThat(petResponse.getOwnerId(), is(equalTo(owner.getId())));
+        assertThat(petResponse.getOwner().getId(), is(equalTo(owner.getId())));
     }
 
     @Test
