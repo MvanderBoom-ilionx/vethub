@@ -137,4 +137,3 @@ The dev server starts at `http://localhost:5173` and requires the backend to be 
 ## Further reading
 
 - [ARCHITECTURE.md](ARCHITECTURE.md) — detailed description of the backend and frontend structure, layer responsibilities, and the OpenAPI sync workflow.
-- [AGENTS.md](AGENTS.md) — guidance for AI agents working in this repository.
